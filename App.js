@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Picker, StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import RpePicker from "./src/RpePicker";
 import RepsPicker from "./src/repsPicker";
 
