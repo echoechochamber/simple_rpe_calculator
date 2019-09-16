@@ -7,15 +7,7 @@ export default function App() {
   const [refRpe, setRefRpe] = useState(6);
   const [refReps, setRefReps] = useState(1);
   const [targetReps, setTargetReps] = useState(1);
-  const [weight, setWeight] = useState("0");
-
-  const updateRpe = newRpe => {
-    setRefRpe(newRpe);
-  };
-
-  const updateRefReps = reps => {
-    setRefReps(reps);
-  };
+  const [weight, setWeight] = useState("");
 
   return (
     <View style={styles.container}>
@@ -31,8 +23,8 @@ export default function App() {
         value={weight}
         keyboardType={"numeric"}
       />
-      <RpePicker RPE={refRpe} onChangeRpe={updateRpe} />
-      <RepsPicker reps={refReps} onChangeReps={updateRefReps} />
+      <RpePicker RPE={refRpe} onChangeRpe={newRpe => setRefRpe(newRpe)} />
+      <RepsPicker reps={refReps} onChangeReps={reps => setRefReps(reps)} />
       <RepsPicker
         reps={targetReps}
         onChangeReps={reps => setTargetReps(reps)}
