@@ -28,6 +28,7 @@ export default function App() {
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
         onChangeText={text => setWeight(text)}
         value={weight}
+        keyboardType={"numeric"}
       />
       <RpePicker RPE={refRpe} onChangeRpe={updateRpe} />
       <RepsPicker reps={refReps} onChangeReps={updateReps} />
