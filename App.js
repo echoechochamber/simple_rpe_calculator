@@ -6,13 +6,14 @@ import RepsPicker from "./src/repsPicker";
 export default function App() {
   const [refRpe, setRefRpe] = useState(6);
   const [refReps, setRefReps] = useState(1);
+  const [targetReps, setTargetReps] = useState(1);
   const [weight, setWeight] = useState("0");
 
   const updateRpe = newRpe => {
     setRefRpe(newRpe);
   };
 
-  const updateReps = reps => {
+  const updateRefReps = reps => {
     setRefReps(reps);
   };
 
@@ -31,7 +32,11 @@ export default function App() {
         keyboardType={"numeric"}
       />
       <RpePicker RPE={refRpe} onChangeRpe={updateRpe} />
-      <RepsPicker reps={refReps} onChangeReps={updateReps} />
+      <RepsPicker reps={refReps} onChangeReps={updateRefReps} />
+      <RepsPicker
+        reps={targetReps}
+        onChangeReps={reps => setTargetReps(reps)}
+      />
     </View>
   );
 }
