@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { PropType } from "prop-types";
+import PropTypes from "prop-types";
 import RPE from "./RPE.json";
 
 const RpeDisplay = props => {
@@ -15,8 +15,10 @@ const RpeDisplay = props => {
   );
 };
 
-RpeDisplay.props = {
-  repCount: PropType.number.isRequired,
-  e1RM: PropType.number.isRequired,
-  rpe: PropType.number.isRequired,
+RpeDisplay.propTypes = {
+  repCount: PropTypes.number.isRequired,
+  e1RM: PropTypes.number.isRequired,
+  rpe: PropTypes.number.isRequired,
 };
+
+export default RpeDisplay;
