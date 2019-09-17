@@ -16,7 +16,6 @@ export default function App() {
         {refReps}
       </Text>
 
-      {/*Text Input for setting weight*/}
       <TextInput
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
         onChangeText={text => setWeight(text)}
