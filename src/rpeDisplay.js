@@ -5,7 +5,7 @@ import RPE from "./RPE.json";
 
 const RpeDisplay = props => {
   const rpeMultiplier = parseFloat(RPE[props.rpe][props.repCount]);
-  const calculated = props.e1RM * rpeMultiplier;
+  const calculated = Math.round(props.e1RM * rpeMultiplier);
   return (
     <View>
       <Text>
