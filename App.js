@@ -34,6 +34,7 @@ export default function App() {
           onChangeText={text => setWeight(text)}
           value={weight}
           keyboardType={"numeric"}
+          clearTextOnFocus={true}
         />
         <RpePicker RPE={refRpe} onChangeRpe={newRpe => setRefRpe(newRpe)} />
         <RepsPicker reps={refReps} onChangeReps={reps => setRefReps(reps)} />
