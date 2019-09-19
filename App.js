@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, FlatList } from "react-native";
+import {
+  StyleSheet,
+  Switch,
+  View,
+  TextInput,
+  FlatList,
+  Text,
+} from "react-native";
 import RpePicker from "./src/RpePicker";
 import RepsPicker from "./src/repsPicker";
 import RpeDisplay from "./src/rpeDisplay";
@@ -10,10 +17,12 @@ export default function App() {
   const [refReps, setRefReps] = useState(1);
   const [targetReps, setTargetReps] = useState(1);
   const [weight, setWeight] = useState("0");
+  const [hasSmallWeights, toggleSmallWeights] = useState(false);
   const rpeValues = ["6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10"];
 
   return (
     <View style={styles.container}>
+      <Text>do I have small weights? {hasSmallWeights ? "yes" : "no"}</Text>
       <View>
         <FlatList
           data={rpeValues}
@@ -43,6 +52,10 @@ export default function App() {
         <RepsPicker
           reps={targetReps}
           onChangeReps={reps => setTargetReps(reps)}
+        />
+        <Switch
+          onValueChange={value => toggleSmallWeights(value)}
+          value={hasSmallWeights}
         />
       </View>
     </View>
