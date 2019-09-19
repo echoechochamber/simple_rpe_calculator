@@ -32,6 +32,7 @@ export default function App() {
               e1RM={calculateE1RM(weight, refReps, refRpe)}
               repCount={targetReps}
               rpe={item}
+              hasSmallWeights={hasSmallWeights}
             />
           )}
         />

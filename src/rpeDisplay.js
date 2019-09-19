@@ -6,7 +6,10 @@ import { roundToNearestWeight } from "./lib";
 
 const RpeDisplay = props => {
   const rpeMultiplier = parseFloat(RPE[props.rpe][props.repCount]);
-  const calculated = roundToNearestWeight(props.e1RM * rpeMultiplier);
+  const calculated = roundToNearestWeight(
+    props.e1RM * rpeMultiplier,
+    props.hasSmallWeights
+  );
   return (
     <View>
       <Text>
@@ -20,6 +23,7 @@ RpeDisplay.propTypes = {
   repCount: PropTypes.number.isRequired,
   e1RM: PropTypes.number.isRequired,
   rpe: PropTypes.number.isRequired,
+  hasSmallWeights: PropTypes.bool.isRequired,
 };
 
 export default RpeDisplay;
