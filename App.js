@@ -17,14 +17,14 @@ export default function App() {
       <View>
         <FlatList
           data={rpeValues}
+          keyExtractor={rpeVal => rpeVal}
           renderItem={({ item }) => (
             <RpeDisplay
-              e1RM={calculateE1RM(weight, refReps, 8.5)}
+              e1RM={calculateE1RM(weight, refReps, refRpe)}
               repCount={targetReps}
               rpe={item}
             />
           )}
-          keyExtractor={rpeVal => rpeVal}
         />
       </View>
 
