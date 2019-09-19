@@ -48,6 +48,7 @@ export default function App() {
         <RpePicker RPE={refRpe} onChangeRpe={newRpe => setRefRpe(newRpe)} />
         <RepsPicker reps={refReps} onChangeReps={reps => setRefReps(reps)} />
       </View>
+
       <View>
         <RepsPicker
           reps={targetReps}
