@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Picker } from "react-native";
+import { Picker, StyleSheet } from "react-native";
 
 const RpePicker = props => {
   const changeRpe = val => {
@@ -10,7 +10,7 @@ const RpePicker = props => {
   return (
     <Picker
       selectedValue={props.RPE}
-      style={{ height: 50, width: 100 }}
+      style={styles.picker}
       onValueChange={(itemValue, itemIndex) => changeRpe(itemValue)}>
       <Picker.Item label="6" value="6" />
       <Picker.Item label="6.5" value="6.5" />
@@ -30,4 +30,11 @@ RpePicker.propTypes = {
   RPE: PropTypes.number,
 };
 
+const styles = StyleSheet.create({
+  picker: {
+    margin: "4px",
+    height: "30px",
+    width: "120px",
+  },
+});
 export default RpePicker;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Picker } from "react-native";
+import { Picker, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 
 const RepsPicker = props => {
@@ -10,9 +10,8 @@ const RepsPicker = props => {
   return (
     <Picker
       selectedValue={props.reps}
-      style={{ height: 50, width: 100 }}
-      onValueChange={(itemValue, itemIndex) => changeReps(itemValue)}
-    >
+      style={styles.picker}
+      onValueChange={(itemValue, itemIndex) => changeReps(itemValue)}>
       <Picker.Item label="1" value="1" />
       <Picker.Item label="2" value="2" />
       <Picker.Item label="3" value="3" />
@@ -31,7 +30,15 @@ const RepsPicker = props => {
 
 RepsPicker.propTypes = {
   onChangeReps: PropTypes.func,
-  reps: PropTypes.number
+  reps: PropTypes.number,
 };
+
+const styles = StyleSheet.create({
+  picker: {
+    margin: "4px",
+    height: "30px",
+    width: "120px",
+  },
+});
 
 export default RepsPicker;

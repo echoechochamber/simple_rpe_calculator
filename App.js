@@ -22,7 +22,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>do I have small weights? {hasSmallWeights ? "yes" : "no"}</Text>
       <View>
         <FlatList
           data={rpeValues}
@@ -37,28 +36,32 @@ export default function App() {
           )}
         />
       </View>
+      {/* bottom container */}
+      <View style={styles.bottomContainer}>
+        <View style={styles.referenceContainers}>
+          <Text style={styles.sectionTitle}>Target Numbers</Text>
+          <TextInput
+            style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+            onChangeText={text => setWeight(text)}
+            value={weight}
+            keyboardType={"numeric"}
+            clearTextOnFocus={true}
+          />
+          <RpePicker RPE={refRpe} onChangeRpe={newRpe => setRefRpe(newRpe)} />
+          <RepsPicker reps={refReps} onChangeReps={reps => setRefReps(reps)} />
+        </View>
 
-      <View style={styles.referenceContainer}>
-        <TextInput
-          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-          onChangeText={text => setWeight(text)}
-          value={weight}
-          keyboardType={"numeric"}
-          clearTextOnFocus={true}
-        />
-        <RpePicker RPE={refRpe} onChangeRpe={newRpe => setRefRpe(newRpe)} />
-        <RepsPicker reps={refReps} onChangeReps={reps => setRefReps(reps)} />
-      </View>
-
-      <View>
-        <RepsPicker
-          reps={targetReps}
-          onChangeReps={reps => setTargetReps(reps)}
-        />
-        <Switch
-          onValueChange={value => toggleSmallWeights(value)}
-          value={hasSmallWeights}
-        />
+        <View style={styles.referenceContainers}>
+          <Text style={styles.sectionTitle}>Target Numbers</Text>
+          <RepsPicker
+            reps={targetReps}
+            onChangeReps={reps => setTargetReps(reps)}
+          />
+          <Switch
+            onValueChange={value => toggleSmallWeights(value)}
+            value={hasSmallWeights}
+          />
+        </View>
       </View>
     </View>
   );
@@ -71,7 +74,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  referenceContainer: {
+  bottomContainer: {
     flexDirection: "row",
+    justifyContent: "flex-start",
+    padding: "12px",
+    borderTopWidth: "2px",
+    borderTopColor: "black",
+    shadowColor: "black",
+    shadowOpacity: 0.3,
+    shadowRadius: "4px",
+  },
+  referenceContainers: {
+    margin: "6px",
+    padding: "8px",
+    alignItems: "flex-start",
+  },
+  sectionTitle: {
+    flex: 1,
+    alignItems: "center",
+    fontSize: "20px",
+    fontWeight: "bold",
   },
 });
