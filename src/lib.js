@@ -9,6 +9,9 @@ export function calculateE1RM(weight, reps, rpe) {
 }
 
 export function roundToNearestWeight(weight, hasTwoPointFives = false) {
+  if (Math.round(weight) === 0) {
+    return 0;
+  }
   // find the weights on one side (simplifies the calculation )
   const weightPerSide = (Math.round(weight) - barWeight) / 2;
   let tmp = weightPerSide;
