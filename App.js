@@ -27,16 +27,7 @@ export default class App extends React.Component {
     };
   }
 
-  ORM() {
-    return calculateE1RM(
-      this.state.weight,
-      this.state.refReps,
-      this.state.refRpe
-    );
-  }
-
   render() {
-    console.log(this.state);
     return (
       <View style={styles.container}>
         <View>
@@ -46,7 +37,11 @@ export default class App extends React.Component {
             keyExtractor={rpeVal => rpeVal}
             renderItem={({ item }) => (
               <RpeDisplay
-                e1RM={this.ORM()}
+                e1RM={calculateE1RM(
+                  this.state.weight,
+                  this.state.refReps,
+                  this.state.refRpe
+                )}
                 repCount={this.state.targetReps}
                 rpe={parseFloat(item)}
                 hasSmallWeights={this.state.hasSmallWeights}
