@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import RPE from "./RPE.json";
 import { roundToNearestWeight } from "./lib";
@@ -12,12 +12,18 @@ const RpeDisplay = props => {
   );
   return (
     <View>
-      <Text>
+      <Text style={styles.text}>
         RPE: {props.rpe} is {calculated}lbs
       </Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  text: {
+    fontFamily: "cabin-semibold",
+  },
+});
 
 RpeDisplay.propTypes = {
   repCount: PropTypes.number.isRequired,
