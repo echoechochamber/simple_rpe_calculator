@@ -15,36 +15,6 @@ import * as Font from "expo-font";
 
 const rpeValues = ["6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10"];
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  bottomContainer: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    padding: "12px",
-    borderTopWidth: "2px",
-    borderTopColor: "black",
-    shadowColor: "black",
-    shadowOpacity: 0.3,
-    shadowRadius: "4px",
-  },
-  referenceContainers: {
-    margin: "6px",
-    padding: "8px",
-    alignItems: "flex-start",
-  },
-  sectionTitle: {
-    flex: 1,
-    alignItems: "center",
-    fontSize: "20px",
-    fontWeight: "bold",
-  },
-});
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -121,3 +91,33 @@ export default class App extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  bottomContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    padding: "12px",
+    borderTopWidth: "2px",
+    borderTopColor: "black",
+    shadowColor: "black",
+    shadowOpacity: 0.3,
+    shadowRadius: "4px",
+  },
+  referenceContainers: {
+    margin: "6px",
+    padding: "8px",
+    alignItems: "flex-start",
+  },
+  sectionTitle: {
+    flex: 1,
+    alignItems: "center",
+    fontSize: "20px",
+    fontWeight: "bold",
+  },
+});
