@@ -24,12 +24,29 @@ export default class App extends React.Component {
       targetReps: 1,
       weight: "0",
       hasSmallWeights: false,
+      fontLoaded: false,
     };
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      "cabin-bold": require("./assets/fonts/Cabin-Bold.ttf"),
+      "cabin-regular": require("./assets/fonts/Cabin-Regular.ttf"),
+      "cabin-semibold": require("./assets/fonts/Cabin-SemiBold.ttf"),
+      "roboto-black": require("./assets/fonts/Roboto-Black.ttf"),
+      "roboto-bold": require("./assets/fonts/Roboto-Bold.ttf"),
+      "roboto-regular": require("./assets/fonts/Roboto-Regular.ttf"),
+    });
+
+    this.setState({ fontLoaded: true });
   }
 
   render() {
     return (
       <View style={styles.container}>
+        {this.state.fontLoaded ? (
+          <Text style={styles.appTitle}>Simple RPE Calculator</Text>
+        ) : null}
         <View>
           <FlatList
             data={rpeValues}
@@ -52,7 +69,10 @@ export default class App extends React.Component {
         {/* bottom container */}
         <View style={styles.bottomContainer}>
           <View style={styles.referenceContainers}>
-            <Text style={styles.sectionTitle}>Target Numbers</Text>
+            {/* conditional so that when the app is reloaded, the fonts will re-render */}
+            {this.state.fontLoaded ? (
+              <Text style={styles.sectionTitle}>Target Numbers</Text>
+            ) : null}
             <TextInput
               style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
               onChangeText={text => this.setState({ weight: text })}
@@ -71,7 +91,10 @@ export default class App extends React.Component {
           </View>
 
           <View style={styles.referenceContainers}>
-            <Text style={styles.sectionTitle}>Target Numbers</Text>
+            {/* conditional so that when the app is reloaded, the fonts will re-render */}
+            {this.state.fontLoaded ? (
+              <Text style={styles.sectionTitle}>Target Numbers</Text>
+            ) : null}
             <RepsPicker
               reps={this.state.targetReps}
               onChangeReps={reps => this.setState({ targetReps: reps })}
@@ -98,8 +121,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     padding: "12px",
-    borderTopWidth: "2px",
-    borderTopColor: "black",
     shadowColor: "black",
     shadowOpacity: 0.3,
     shadowRadius: "4px",
@@ -109,10 +130,14 @@ const styles = StyleSheet.create({
     padding: "8px",
     alignItems: "flex-start",
   },
+  appTitle: {
+    fontFamily: "roboto-black",
+    fontSize: "36px",
+  },
   sectionTitle: {
     flex: 1,
+    fontFamily: "roboto-black",
     alignItems: "center",
     fontSize: "20px",
-    fontWeight: "bold",
   },
 });
