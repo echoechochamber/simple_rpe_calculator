@@ -11,6 +11,7 @@ import RpePicker from "./src/RpePicker";
 import RepsPicker from "./src/repsPicker";
 import RpeDisplay from "./src/rpeDisplay";
 import { calculateE1RM } from "./src/lib";
+import * as Font from "expo-font";
 
 export default function App() {
   const [refRpe, setRefRpe] = useState(6);
