@@ -26,6 +26,12 @@ export default class App extends React.Component {
       hasSmallWeights: false,
       fontLoaded: false,
     };
+
+    this.setRefRpe = this.setRefRpe.bind(this);
+  }
+
+  setRefRpe(rpe) {
+    this.setState({ refRpe: rpe });
   }
 
   async componentDidMount() {
@@ -49,6 +55,7 @@ export default class App extends React.Component {
         {this.state.fontLoaded ? (
           <Text style={styles.appTitle}>Simple RPE Calculator</Text>
         ) : null}
+
         <Text>
           Debug: weight: {this.state.weight} refRPE: {this.state.refRpe} reps:
           {this.state.refReps}
@@ -92,13 +99,7 @@ export default class App extends React.Component {
                 clearTextOnFocus={true}
               />
             </View>
-            <RpePicker
-              RPE={this.state.refRpe}
-              onChangeRpe={newRpe => {
-                console.log(newRpe);
-                this.setState({ refRpe: newRpe });
-              }}
-            />
+            <RpePicker RPE={this.state.refRpe} onChangeRpe={this.setRefRpe} />
             <RepsPicker
               reps={this.state.refReps}
               onChangeReps={reps => this.setState({ refReps: reps })}
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     flexDirection: "row",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     padding: 12,
     shadowColor: "black",
     shadowOpacity: 0.3,

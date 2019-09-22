@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Picker, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import RNPickerSelect from "react-native-picker-select";
 
 const RpePicker = props => {
   const changeRpe = val => {
@@ -10,21 +11,21 @@ const RpePicker = props => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>RPE</Text>
-      <Picker
-        selectedValue={props.RPE}
-        style={styles.picker}
-        itemStyle={styles.itemPicker}
-        onValueChange={(itemValue, itemIndex) => changeRpe(itemValue)}>
-        <Picker.Item label="6" value="6" />
-        <Picker.Item label="6.5" value="6.5" />
-        <Picker.Item label="7" value="7" />
-        <Picker.Item label="7.5" value="7.5" />
-        <Picker.Item label="8" value="8" />
-        <Picker.Item label="8.5" value="8.5" />
-        <Picker.Item label="9" value="9" />
-        <Picker.Item label="9.5" value="9.5" />
-        <Picker.Item label="10" value="10" />
-      </Picker>
+      <RNPickerSelect
+        placeholder={{ label: "Select RPE", value: null }}
+        onValueChange={value => changeRpe(value)}
+        items={[
+          { label: "@6", value: "6" },
+          { label: "@6.5", value: "6.5" },
+          { label: "@7", value: "7" },
+          { label: "@7.5", value: "7.5" },
+          { label: "@8", value: "8" },
+          { label: "@8.5", value: "8.5" },
+          { label: "@9", value: "9" },
+          { label: "@9.5", value: "9.5" },
+          { label: "@10", value: "10" },
+        ]}
+      />
     </View>
   );
 };
@@ -35,14 +36,6 @@ RpePicker.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  picker: {
-    height: 30,
-    width: 120,
-  },
-  pickerItem: {
-    height: 16,
-  },
-  label: {},
   container: {
     flex: 1,
     padding: 4,
