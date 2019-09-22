@@ -20,9 +20,7 @@ const RpeDisplay = props => {
 };
 
 const styles = StyleSheet.create({
-  text: {
-    fontFamily: "cabin-semibold",
-  },
+  text: {},
 });
 
 RpeDisplay.propTypes = {

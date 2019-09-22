@@ -13,6 +13,7 @@ const RpePicker = props => {
       <Picker
         selectedValue={props.RPE}
         style={styles.picker}
+        itemStyle={styles.itemPicker}
         onValueChange={(itemValue, itemIndex) => changeRpe(itemValue)}>
         <Picker.Item label="6" value="6" />
         <Picker.Item label="6.5" value="6.5" />
@@ -35,15 +36,17 @@ RpePicker.propTypes = {
 
 const styles = StyleSheet.create({
   picker: {
-    height: "30px",
-    width: "120px",
+    height: 30,
+    width: 120,
   },
-  label: {
-    fontFamily: "cabin-semibold",
+  pickerItem: {
+    height: 16,
   },
+  label: {},
   container: {
-    padding: "4px",
-    margin: "4px",
+    flex: 1,
+    padding: 4,
+    margin: 4,
   },
 });
 export default RpePicker;

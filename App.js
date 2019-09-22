@@ -49,6 +49,10 @@ export default class App extends React.Component {
         {this.state.fontLoaded ? (
           <Text style={styles.appTitle}>Simple RPE Calculator</Text>
         ) : null}
+        <Text>
+          Debug: weight: {this.state.weight} refRPE: {this.state.refRpe} reps:
+          {this.state.refReps}
+        </Text>
         <View>
           <FlatList
             data={rpeValues}
@@ -75,7 +79,8 @@ export default class App extends React.Component {
             {this.state.fontLoaded ? (
               <Text style={styles.sectionTitle}>Basis Numbers</Text>
             ) : null}
-            <View style={{ padding: "4px" }}>
+            {/* TODO: refactor this into its own component */}
+            <View style={{ padding: 4 }}>
               {this.state.fontLoaded ? (
                 <Text style={{ fontFamily: "cabin-bold" }}>Weight</Text>
               ) : null}
@@ -89,7 +94,10 @@ export default class App extends React.Component {
             </View>
             <RpePicker
               RPE={this.state.refRpe}
-              onChangeRpe={newRpe => this.setState({ refRpe: newRpe })}
+              onChangeRpe={newRpe => {
+                console.log(newRpe);
+                this.setState({ refRpe: newRpe });
+              }}
             />
             <RepsPicker
               reps={this.state.refReps}
@@ -121,29 +129,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
   bottomContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
-    padding: "12px",
+    padding: 12,
     shadowColor: "black",
     shadowOpacity: 0.3,
-    shadowRadius: "4px",
+    shadowRadius: 4,
   },
   referenceContainers: {
-    margin: "6px",
+    margin: 6,
     alignItems: "flex-start",
   },
   appTitle: {
     fontFamily: "roboto-black",
-    fontSize: "36px",
+    fontSize: 36,
   },
   sectionTitle: {
     fontFamily: "roboto-black",
     alignItems: "center",
-    fontSize: "20px",
-    marginBottom: "12px",
+    fontSize: 20,
+    marginBottom: 12,
   },
 });

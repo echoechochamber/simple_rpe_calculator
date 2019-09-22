@@ -13,6 +13,7 @@ const RepsPicker = props => {
       <Picker
         selectedValue={props.reps}
         style={styles.picker}
+        style={styles.pickerItem}
         onValueChange={(itemValue, itemIndex) => changeReps(itemValue)}>
         <Picker.Item label="1" value="1" />
         <Picker.Item label="2" value="2" />
@@ -38,15 +39,15 @@ RepsPicker.propTypes = {
 
 const styles = StyleSheet.create({
   picker: {
-    height: "30px",
-    width: "120px",
+    height: 30,
+    width: 120,
   },
-  label: {
-    fontFamily: "cabin-semibold",
-  },
+  pickerItem: { height: 16 },
+  label: {},
   container: {
-    padding: "4px",
-    margin: "4px",
+    flex: 1,
+    padding: 4,
+    margin: 4,
   },
 });
 
