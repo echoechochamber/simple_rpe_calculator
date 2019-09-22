@@ -29,6 +29,7 @@ export default class App extends React.Component {
   }
 
   async componentDidMount() {
+    // load custom local fonts async
     await Font.loadAsync({
       "cabin-bold": require("./assets/fonts/Cabin-Bold.ttf"),
       "cabin-regular": require("./assets/fonts/Cabin-Regular.ttf"),
@@ -37,7 +38,8 @@ export default class App extends React.Component {
       "roboto-bold": require("./assets/fonts/Roboto-Bold.ttf"),
       "roboto-regular": require("./assets/fonts/Roboto-Regular.ttf"),
     });
-
+    // update the fontLoaded state variable so that the text can beupdated when the
+    // custom fonts are loaded
     this.setState({ fontLoaded: true });
   }
 
