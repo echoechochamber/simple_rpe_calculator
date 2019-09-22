@@ -73,15 +73,20 @@ export default class App extends React.Component {
           <View style={styles.referenceContainers}>
             {/* conditional so that when the app is reloaded, the fonts will re-render */}
             {this.state.fontLoaded ? (
-              <Text style={styles.sectionTitle}>Target Numbers</Text>
+              <Text style={styles.sectionTitle}>Basis Numbers</Text>
             ) : null}
-            <TextInput
-              style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-              onChangeText={text => this.setState({ weight: text })}
-              value={this.state.weight}
-              keyboardType={"numeric"}
-              clearTextOnFocus={true}
-            />
+            <View style={{ padding: "4px" }}>
+              {this.state.fontLoaded ? (
+                <Text style={{ fontFamily: "cabin-bold" }}>Weight</Text>
+              ) : null}
+              <TextInput
+                style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+                onChangeText={text => this.setState({ weight: text })}
+                value={this.state.weight}
+                keyboardType={"numeric"}
+                clearTextOnFocus={true}
+              />
+            </View>
             <RpePicker
               RPE={this.state.refRpe}
               onChangeRpe={newRpe => this.setState({ refRpe: newRpe })}
@@ -97,13 +102,13 @@ export default class App extends React.Component {
             {this.state.fontLoaded ? (
               <Text style={styles.sectionTitle}>Target Numbers</Text>
             ) : null}
-            <RepsPicker
-              reps={this.state.targetReps}
-              onChangeReps={reps => this.setState({ targetReps: reps })}
-            />
             <Switch
               onValueChange={value => this.setState({ hasSmallWeights: value })}
               value={this.state.hasSmallWeights}
+            />
+            <RepsPicker
+              reps={this.state.targetReps}
+              onChangeReps={reps => this.setState({ targetReps: reps })}
             />
           </View>
         </View>
@@ -129,7 +134,6 @@ const styles = StyleSheet.create({
   },
   referenceContainers: {
     margin: "6px",
-    padding: "8px",
     alignItems: "flex-start",
   },
   appTitle: {
@@ -137,9 +141,9 @@ const styles = StyleSheet.create({
     fontSize: "36px",
   },
   sectionTitle: {
-    flex: 1,
     fontFamily: "roboto-black",
     alignItems: "center",
     fontSize: "20px",
+    marginBottom: "12px",
   },
 });

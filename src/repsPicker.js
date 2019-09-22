@@ -8,7 +8,7 @@ const RepsPicker = props => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.label}>Reps</Text>
       <Picker
         selectedValue={props.reps}
@@ -38,13 +38,15 @@ RepsPicker.propTypes = {
 
 const styles = StyleSheet.create({
   picker: {
-    margin: "4px",
     height: "30px",
     width: "120px",
   },
   label: {
-    paddingLeft: "4px",
     fontFamily: "cabin-semibold",
+  },
+  container: {
+    padding: "4px",
+    margin: "4px",
   },
 });
 
