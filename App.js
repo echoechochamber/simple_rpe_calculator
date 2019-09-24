@@ -12,7 +12,7 @@ import RepsPicker from "./src/repsPicker";
 import RpeDisplay from "./src/rpeDisplay";
 import { calculateE1RM } from "./src/lib";
 import * as Font from "expo-font";
-
+import Constants from "expo-constants";
 const rpeValues = ["6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10"];
 
 export default class App extends React.Component {
@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    marginTop: Constants.statusBarHeight,
   },
   bottomContainer: {
     flexDirection: "row",
