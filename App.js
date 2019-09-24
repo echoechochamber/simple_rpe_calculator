@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
     marginTop: Constants.statusBarHeight,
   },
   bottomContainer: {
+    flex: 1,
     flexDirection: "row",
     justifyContent: "center",
     padding: 12,
