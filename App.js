@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  ActivityIndicator,
   StyleSheet,
   Switch,
   View,
@@ -7,12 +8,12 @@ import {
   FlatList,
   Text,
 } from "react-native";
-import RpePicker from "./src/RpePicker";
-import RepsPicker from "./src/repsPicker";
-import RpeDisplay from "./src/rpeDisplay";
+import RpePicker from "./src/components/RpePicker";
+import RepsPicker from "./src/components/repsPicker";
+import RpeDisplay from "./src/components/rpeDisplay";
 import { calculateE1RM } from "./src/lib";
 import * as Font from "expo-font";
-import Constants from "expo-constants";
+import { app, textInput } from "./src/styles";
 const rpeValues = ["6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10"];
 
 export default class App extends React.Component {
@@ -50,109 +51,74 @@ export default class App extends React.Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        {this.state.fontLoaded ? (
-          <Text style={styles.appTitle}>Simple RPE Calculator</Text>
-        ) : null}
+    if (this.state.fontLoaded) {
+      return (
+        <View style={app.container}>
+          <Text style={app.appTitle}>Simple RPE Calculator</Text>
 
-        <Text>
-          Debug: weight: {this.state.weight} refRPE: {this.state.refRpe} reps:
-          {this.state.refReps}
-        </Text>
-        <View>
-          <FlatList
-            data={rpeValues}
-            extraData={this.state}
-            keyExtractor={rpeVal => rpeVal}
-            renderItem={({ item }) => (
-              <RpeDisplay
-                e1RM={calculateE1RM(
-                  this.state.weight,
-                  this.state.refReps,
-                  this.state.refRpe
-                )}
-                repCount={this.state.targetReps}
-                rpe={parseFloat(item)}
-                hasSmallWeights={this.state.hasSmallWeights}
-              />
-            )}
-          />
-        </View>
-        {/* bottom container */}
-        <View style={styles.bottomContainer}>
-          <View style={styles.referenceContainers}>
-            {/* conditional so that when the app is reloaded, the fonts will re-render */}
-            {this.state.fontLoaded ? (
-              <Text style={styles.sectionTitle}>Basis Numbers</Text>
-            ) : null}
-            {/* TODO: refactor this into its own component */}
-            <View style={{ padding: 4 }}>
-              {this.state.fontLoaded ? (
-                <Text style={{ fontFamily: "cabin-bold" }}>Weight</Text>
-              ) : null}
-              <TextInput
-                style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-                onChangeText={text => this.setState({ weight: text })}
-                value={this.state.weight}
-                keyboardType={"numeric"}
-                clearTextOnFocus={true}
+          <View>
+            <FlatList
+              data={rpeValues}
+              extraData={this.state}
+              keyExtractor={rpeVal => rpeVal}
+              renderItem={({ item }) => (
+                <RpeDisplay
+                  e1RM={calculateE1RM(
+                    this.state.weight,
+                    this.state.refReps,
+                    this.state.refRpe
+                  )}
+                  repCount={this.state.targetReps}
+                  rpe={parseFloat(item)}
+                  hasSmallWeights={this.state.hasSmallWeights}
+                />
+              )}
+            />
+          </View>
+          {/* bottom container */}
+          <View style={app.bottomContainer}>
+            <View style={app.referenceContainers}>
+              <Text style={app.sectionTitle}>Basis Numbers</Text>
+              {/* TODO: refactor this into its own component */}
+              <View style={{ padding: 4 }}>
+                <Text style={textInput.label}>Weight</Text>
+                <TextInput
+                  style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+                  onChangeText={text => this.setState({ weight: text })}
+                  value={this.state.weight}
+                  keyboardType={"numeric"}
+                  clearTextOnFocus={true}
+                />
+              </View>
+              <RpePicker RPE={this.state.refRpe} onChangeRpe={this.setRefRpe} />
+              <RepsPicker
+                reps={this.state.refReps}
+                onChangeReps={reps => this.setState({ refReps: reps })}
               />
             </View>
-            <RpePicker RPE={this.state.refRpe} onChangeRpe={this.setRefRpe} />
-            <RepsPicker
-              reps={this.state.refReps}
-              onChangeReps={reps => this.setState({ refReps: reps })}
-            />
-          </View>
 
-          <View style={styles.referenceContainers}>
-            {/* conditional so that when the app is reloaded, the fonts will re-render */}
-            {this.state.fontLoaded ? (
-              <Text style={styles.sectionTitle}>Target Numbers</Text>
-            ) : null}
-            <Switch
-              onValueChange={value => this.setState({ hasSmallWeights: value })}
-              value={this.state.hasSmallWeights}
-            />
-            <RepsPicker
-              reps={this.state.targetReps}
-              onChangeReps={reps => this.setState({ targetReps: reps })}
-            />
+            <View style={app.referenceContainers}>
+              <Text style={app.sectionTitle}>Target Numbers</Text>
+              <Switch
+                onValueChange={value =>
+                  this.setState({ hasSmallWeights: value })
+                }
+                value={this.state.hasSmallWeights}
+              />
+              <RepsPicker
+                reps={this.state.targetReps}
+                onChangeReps={reps => this.setState({ targetReps: reps })}
+              />
+            </View>
           </View>
         </View>
-      </View>
-    );
+      );
+    } else {
+      return (
+        <View style={app.loading}>
+          <ActivityIndicator size="large" color="#0000ff" />
+        </View>
+      );
+    }
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    marginTop: Constants.statusBarHeight,
-  },
-  bottomContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    padding: 12,
-    shadowColor: "black",
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-  },
-  referenceContainers: {
-    margin: 6,
-    alignItems: "flex-start",
-  },
-  appTitle: {
-    fontFamily: "roboto-black",
-    fontSize: 36,
-  },
-  sectionTitle: {
-    fontFamily: "roboto-black",
-    alignItems: "center",
-    fontSize: 20,
-    marginBottom: 12,
-  },
-});

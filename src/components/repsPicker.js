@@ -2,16 +2,17 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import PropTypes from "prop-types";
 import RNPickerSelect from "react-native-picker-select";
-
+import { picker } from "../styles";
 const RepsPicker = props => {
   const changeReps = val => {
     props.onChangeReps(parseInt(val));
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Reps</Text>
+    <View style={picker.container}>
+      <Text style={picker.label}>Reps</Text>
       <RNPickerSelect
+        style={picker.inputIOS}
         placeholder={{ label: "Select rep count", value: null }}
         onValueChange={itemValue => changeReps(itemValue)}
         items={[
@@ -37,13 +38,5 @@ RepsPicker.propTypes = {
   onChangeReps: PropTypes.func,
   reps: PropTypes.number,
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 4,
-    margin: 4,
-  },
-});
 
 export default RepsPicker;
