@@ -1,7 +1,6 @@
 import React from "react";
 import {
   ActivityIndicator,
-  StyleSheet,
   Switch,
   View,
   TextInput,
