@@ -128,9 +128,10 @@ export default class App extends React.Component {
         </View>
       );
     } else {
+		{/* display loading animation until all of the fonts have loaded */}
       return (
         <View style={app.loading}>
-          <ActivityIndicator size="large" color="#0000ff" />
+          <ActivityIndicator size="large" color="gray" />
         </View>
       );
     }
