@@ -6,12 +6,12 @@ const picker = StyleSheet.create({
     padding: 4,
     margin: 4,
     height: 40,
-    width: "100%",
+    width: "100%"
   },
   label: {
     fontFamily: "cabin-semibold",
-    fontSize: 18,
-  },
+    fontSize: 18
+  }
 });
 
 const defaultPicker = StyleSheet.create({
@@ -24,33 +24,39 @@ const defaultPicker = StyleSheet.create({
     borderColor: "gray",
     borderRadius: 4,
     color: "black",
-    paddingRight: 30, // to ensure the text is never behind the icon
+    paddingRight: 30 // to ensure the text is never behind the icon
   },
   inputAndroid: {
     fontSize: 16,
     paddingHorizontal: 10,
     paddingVertical: 8,
     borderWidth: 0.5,
-    borderColor: "black",
+    borderColor: "gray",
     borderRadius: 8,
     color: "black",
-    paddingRight: 30, // to ensure the text is never behind the icon
-  },
+    paddingRight: 30 // to ensure the text is never behind the icon
+  }
 });
 
 const textInput = StyleSheet.create({
   label: {
     fontFamily: "cabin-semibold",
-    fontSize: 18,
+    fontSize: 18
   },
+  input: {
+    padding: 4,
+    borderColor: "gray",
+    borderRadius: 4,
+    borderWidth: 0.5
+  }
 });
 
 const rpe = StyleSheet.create({
   text: {
     fontFamily: "cabin-semibold",
     fontSize: 16,
-    margin: 4,
-  },
+    margin: 4
+  }
 });
 
 const app = StyleSheet.create({
@@ -59,42 +65,42 @@ const app = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     marginTop: Constants.statusBarHeight,
-    padding: 12,
+    padding: 12
   },
   bottomContainer: {
     borderWidth: 1,
-    borderColor: "black",
-    // flex: 1,
+    borderColor: "gray",
+    borderRadius: 8,
     height: "60%",
     flexDirection: "row",
     justifyContent: "center",
     shadowColor: "black",
     shadowOpacity: 0.3,
-    shadowRadius: 4,
+    shadowRadius: 4
   },
   referenceContainers: {
     flex: 1,
     padding: 4,
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "flex-start"
   },
   appTitle: {
     fontFamily: "roboto-black",
-    fontSize: 36,
+    fontSize: 36
   },
   sectionTitle: {
     fontFamily: "roboto-black",
     alignItems: "center",
     fontSize: 20,
-    marginBottom: 12,
+    marginBottom: 12
   },
   loading: {
     flex: 1,
     alignItems: "center",
     backgroundColor: "#fff",
     padding: 12,
-    justifyContent: "center",
-  },
+    justifyContent: "center"
+  }
 });
 
 export { defaultPicker, picker, app, rpe, textInput };

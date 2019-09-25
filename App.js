@@ -38,8 +38,8 @@ export default class App extends React.Component {
     this.setState({ refRpe: rpe });
   }
 
-  setRefReps(reps){
-  	this.setState({refReps: reps})
+  setRefReps(reps) {
+    this.setState({ refReps: reps });
   }
 
   setWeight(weight) {
@@ -50,8 +50,8 @@ export default class App extends React.Component {
     this.setState({ hasSmallWeights: value });
   }
 
-  setTargetReps(reps){
-	  this.setState({ targetReps: reps })
+  setTargetReps(reps) {
+    this.setState({ targetReps: reps });
   }
 
   async componentDidMount() {
@@ -97,7 +97,7 @@ export default class App extends React.Component {
             <View style={app.referenceContainers}>
               <Text style={app.sectionTitle}>Basis Numbers</Text>
               {/* TODO: refactor this into its own component */}
-              <View style={{ padding: 4 }}>
+              <View>
                 <Text style={textInput.label}>Weight</Text>
                 <TextInput
                   style={textInput.input}
@@ -108,7 +108,10 @@ export default class App extends React.Component {
                 />
               </View>
               <RpePicker RPE={this.state.refRpe} onChangeRpe={this.setRefRpe} />
-              <RepsPicker reps={this.state.refReps} onChangeReps={this.setRefReps} />
+              <RepsPicker
+                reps={this.state.refReps}
+                onChangeReps={this.setRefReps}
+              />
             </View>
 
             <View style={app.referenceContainers}>
