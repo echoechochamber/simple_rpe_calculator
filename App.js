@@ -1,7 +1,6 @@
 import React from "react";
 import {
   ActivityIndicator,
-  Switch,
   View,
   TextInput,
   FlatList,
@@ -10,6 +9,7 @@ import {
 import RpePicker from "./src/components/RpePicker";
 import RepsPicker from "./src/components/repsPicker";
 import RpeDisplay from "./src/components/rpeDisplay";
+import SmallestWeightSwitch from "./src/components/smallestWeightSwitch";
 import { calculateE1RM } from "./src/lib";
 import * as Font from "expo-font";
 import { app, textInput } from "./src/styles";
@@ -74,7 +74,6 @@ export default class App extends React.Component {
       return (
         <View style={app.container}>
           <Text style={app.appTitle}>Simple RPE Calculator</Text>
-
           <FlatList
             data={rpeValues}
             extraData={this.state}
@@ -115,7 +114,7 @@ export default class App extends React.Component {
 
             <View style={app.referenceContainers}>
               <Text style={app.sectionTitle}>Target Numbers</Text>
-              <Switch
+              <SmallestWeightSwitch
                 onValueChange={this.toggleSmallestWeights}
                 value={this.state.hasSmallWeights}
               />
@@ -128,7 +127,9 @@ export default class App extends React.Component {
         </View>
       );
     } else {
-		{/* display loading animation until all of the fonts have loaded */}
+      {
+        /* display loading animation until all of the fonts have loaded */
+      }
       return (
         <View style={app.loading}>
           <ActivityIndicator size="large" color="gray" />

@@ -59,6 +59,25 @@ const rpe = StyleSheet.create({
   }
 });
 
+const toggle = StyleSheet.create({
+  container: {
+    padding: 4
+  },
+  horizontal: {
+    marginTop: 8,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  description: {
+    fontFamily: "cabin-semibold",
+    fontSize: 18
+  },
+  label: {
+    fontFamily: "cabin-regular",
+    fontSize: 12
+  }
+});
+
 const app = StyleSheet.create({
   container: {
     flex: 1,
@@ -85,7 +104,7 @@ const app = StyleSheet.create({
     justifyContent: "flex-start"
   },
   appTitle: {
-    fontFamily: "roboto-black",
+    fontFamily: "roboto-bold",
     fontSize: 36
   },
   sectionTitle: {
@@ -103,4 +122,4 @@ const app = StyleSheet.create({
   }
 });
 
-export { defaultPicker, picker, app, rpe, textInput };
+export { defaultPicker, picker, app, rpe, textInput, toggle };
