@@ -96,7 +96,6 @@ export default class App extends React.Component {
           <View style={app.bottomContainer}>
             <View style={app.referenceContainers}>
               <Text style={app.sectionTitle}>Basis Numbers</Text>
-              {/* TODO: refactor this into its own component */}
               <View>
                 <Text style={textInput.label}>Weight</Text>
                 <TextInput
