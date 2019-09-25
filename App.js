@@ -56,7 +56,6 @@ export default class App extends React.Component {
         <View style={app.container}>
           <Text style={app.appTitle}>Simple RPE Calculator</Text>
 
-          {/* <View> */}
           <FlatList
             data={rpeValues}
             extraData={this.state}
@@ -74,7 +73,6 @@ export default class App extends React.Component {
               />
             )}
           />
-          {/* </View> */}
           {/* bottom container */}
           <View style={app.bottomContainer}>
             <View style={app.referenceContainers}>
@@ -83,7 +81,7 @@ export default class App extends React.Component {
               <View style={{ padding: 4 }}>
                 <Text style={textInput.label}>Weight</Text>
                 <TextInput
-                  style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+                  style={textInput.input}
                   onChangeText={text => this.setState({ weight: text })}
                   value={this.state.weight}
                   keyboardType={"numeric"}
