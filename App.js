@@ -6,7 +6,7 @@ import {
   View,
   TextInput,
   FlatList,
-  Text,
+  Text
 } from "react-native";
 import RpePicker from "./src/components/RpePicker";
 import RepsPicker from "./src/components/repsPicker";
@@ -25,14 +25,34 @@ export default class App extends React.Component {
       targetReps: 1,
       weight: "0",
       hasSmallWeights: false,
-      fontLoaded: false,
+      fontLoaded: false
     };
 
     this.setRefRpe = this.setRefRpe.bind(this);
+    this.setRefReps = this.setRefReps.bind(this);
+    this.setWeight = this.setWeight.bind(this);
+    this.toggleSmallestWeights = this.toggleSmallestWeights.bind(this);
+    this.setTargetReps = this.setTargetReps.bind(this);
   }
 
   setRefRpe(rpe) {
     this.setState({ refRpe: rpe });
+  }
+
+  setRefReps(reps){
+  	this.setState({refReps: reps})
+  }
+
+  setWeight(weight) {
+    this.setState({ weight: weight });
+  }
+
+  toggleSmallestWeights(value) {
+    this.setState({ hasSmallWeights: value });
+  }
+
+  setTargetReps(reps){
+	  this.setState({ targetReps: reps })
   }
 
   async componentDidMount() {
@@ -43,7 +63,7 @@ export default class App extends React.Component {
       "cabin-semibold": require("./assets/fonts/Cabin-SemiBold.ttf"),
       "roboto-black": require("./assets/fonts/Roboto-Black.ttf"),
       "roboto-bold": require("./assets/fonts/Roboto-Bold.ttf"),
-      "roboto-regular": require("./assets/fonts/Roboto-Regular.ttf"),
+      "roboto-regular": require("./assets/fonts/Roboto-Regular.ttf")
     });
     // update the fontLoaded state variable so that the text can beupdated when the
     // custom fonts are loaded
@@ -82,30 +102,25 @@ export default class App extends React.Component {
                 <Text style={textInput.label}>Weight</Text>
                 <TextInput
                   style={textInput.input}
-                  onChangeText={text => this.setState({ weight: text })}
+                  onChangeText={this.setWeight}
                   value={this.state.weight}
                   keyboardType={"numeric"}
                   clearTextOnFocus={true}
                 />
               </View>
               <RpePicker RPE={this.state.refRpe} onChangeRpe={this.setRefRpe} />
-              <RepsPicker
-                reps={this.state.refReps}
-                onChangeReps={reps => this.setState({ refReps: reps })}
-              />
+              <RepsPicker reps={this.state.refReps} onChangeReps={this.setRefReps} />
             </View>
 
             <View style={app.referenceContainers}>
               <Text style={app.sectionTitle}>Target Numbers</Text>
               <Switch
-                onValueChange={value =>
-                  this.setState({ hasSmallWeights: value })
-                }
+                onValueChange={this.toggleSmallestWeights}
                 value={this.state.hasSmallWeights}
               />
               <RepsPicker
                 reps={this.state.targetReps}
-                onChangeReps={reps => this.setState({ targetReps: reps })}
+                onChangeReps={this.setTargetReps}
               />
             </View>
           </View>
