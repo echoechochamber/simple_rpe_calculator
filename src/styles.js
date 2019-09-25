@@ -61,7 +61,7 @@ const rpe = StyleSheet.create({
 
 const toggle = StyleSheet.create({
   container: {
-    padding: 4
+  	margin: 20
   },
   horizontal: {
     marginTop: 8,
@@ -90,7 +90,7 @@ const app = StyleSheet.create({
     borderWidth: 1,
     borderColor: "gray",
     borderRadius: 8,
-    height: "60%",
+    height: "50%",
     flexDirection: "row",
     justifyContent: "center",
     shadowColor: "black",

@@ -114,13 +114,13 @@ export default class App extends React.Component {
 
             <View style={app.referenceContainers}>
               <Text style={app.sectionTitle}>Target Numbers</Text>
-              <SmallestWeightSwitch
-                onValueChange={this.toggleSmallestWeights}
-                value={this.state.hasSmallWeights}
-              />
               <RepsPicker
                 reps={this.state.targetReps}
                 onChangeReps={this.setTargetReps}
+              />
+              <SmallestWeightSwitch
+                onValueChange={this.toggleSmallestWeights}
+                value={this.state.hasSmallWeights}
               />
             </View>
           </View>
