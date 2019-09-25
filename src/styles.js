@@ -12,14 +12,29 @@ const picker = StyleSheet.create({
     fontFamily: "cabin-semibold",
     fontSize: 18,
   },
+});
+
+const defaultPicker = StyleSheet.create({
+  placeholder: { fontSize: 12 },
   inputIOS: {
-    paddingVertical: 4,
-    paddingHorizontal: 4,
+    fontSize: 16,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "gray",
     borderRadius: 4,
     color: "black",
-    width: 100,
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+  inputAndroid: {
+    fontSize: 16,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 0.5,
+    borderColor: "black",
+    borderRadius: 8,
+    color: "black",
+    paddingRight: 30, // to ensure the text is never behind the icon
   },
 });
 
@@ -33,7 +48,7 @@ const textInput = StyleSheet.create({
 const rpe = StyleSheet.create({
   text: {
     fontFamily: "cabin-semibold",
-    fontSize: 18,
+    fontSize: 16,
     margin: 4,
   },
 });
@@ -47,7 +62,10 @@ const app = StyleSheet.create({
     padding: 12,
   },
   bottomContainer: {
-    flex: 1,
+    borderWidth: 1,
+    borderColor: "black",
+    // flex: 1,
+    height: "60%",
     flexDirection: "row",
     justifyContent: "center",
     shadowColor: "black",
@@ -79,4 +97,4 @@ const app = StyleSheet.create({
   },
 });
 
-export { picker, app, rpe, textInput };
+export { defaultPicker, picker, app, rpe, textInput };

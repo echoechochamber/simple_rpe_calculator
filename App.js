@@ -56,25 +56,25 @@ export default class App extends React.Component {
         <View style={app.container}>
           <Text style={app.appTitle}>Simple RPE Calculator</Text>
 
-          <View>
-            <FlatList
-              data={rpeValues}
-              extraData={this.state}
-              keyExtractor={rpeVal => rpeVal}
-              renderItem={({ item }) => (
-                <RpeDisplay
-                  e1RM={calculateE1RM(
-                    this.state.weight,
-                    this.state.refReps,
-                    this.state.refRpe
-                  )}
-                  repCount={this.state.targetReps}
-                  rpe={parseFloat(item)}
-                  hasSmallWeights={this.state.hasSmallWeights}
-                />
-              )}
-            />
-          </View>
+          {/* <View> */}
+          <FlatList
+            data={rpeValues}
+            extraData={this.state}
+            keyExtractor={rpeVal => rpeVal}
+            renderItem={({ item }) => (
+              <RpeDisplay
+                e1RM={calculateE1RM(
+                  this.state.weight,
+                  this.state.refReps,
+                  this.state.refRpe
+                )}
+                repCount={this.state.targetReps}
+                rpe={parseFloat(item)}
+                hasSmallWeights={this.state.hasSmallWeights}
+              />
+            )}
+          />
+          {/* </View> */}
           {/* bottom container */}
           <View style={app.bottomContainer}>
             <View style={app.referenceContainers}>

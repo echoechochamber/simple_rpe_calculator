@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { StyleSheet, Text, View } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
-import { picker } from "../styles";
+import { defaultPicker, picker } from "../styles";
 
 const RpePicker = props => {
   const changeRpe = val => {
@@ -13,7 +13,7 @@ const RpePicker = props => {
     <View style={picker.container}>
       <Text style={picker.label}>RPE</Text>
       <RNPickerSelect
-        style={picker.inputIOS}
+        style={defaultPicker}
         placeholder={{ label: "Select RPE", value: null }}
         onValueChange={value => changeRpe(value)}
         items={[
