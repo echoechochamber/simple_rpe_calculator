@@ -14,7 +14,7 @@ const RepsPicker = props => {
       <Text style={picker.label}>Reps</Text>
       <RNPickerSelect
         style={defaultPicker}
-        placeholder={{ label: "Select rep count", value: null }}
+        placeholder={{ label: "Select rep count", value: NaN }}
         onValueChange={itemValue => changeReps(itemValue)}
         items={[
           { label: "x1", value: "1" },

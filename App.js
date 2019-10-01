@@ -44,8 +44,7 @@ export default class App extends React.Component {
   }
 
   setWeight(e) {
-    console.log(e.currentTarget);
-    this.setState({ weight: e.currentTarget });
+    this.setState({ weight: e.nativeEvent.text });
   }
 
   toggleSmallestWeights(value) {

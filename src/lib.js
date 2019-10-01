@@ -16,7 +16,8 @@ export function roundToNearestWeight(weight, hasTwoPointFives = false) {
     return 0;
   }
   // find the weights on one side (simplifies the calculation )
-  let tmp = (Math.round(weight) - barWeight) / 2;
+  const weightPerSide = (Math.round(weight) - barWeight) / 2;
+  let tmp = weightPerSide;
   let storageValue = 0;
 
   const availablePlates = hasTwoPointFives
