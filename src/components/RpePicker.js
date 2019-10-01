@@ -25,7 +25,7 @@ const RpePicker = props => {
           { label: "@8.5", value: "8.5" },
           { label: "@9", value: "9" },
           { label: "@9.5", value: "9.5" },
-          { label: "@10", value: "10" },
+          { label: "@10", value: "10" }
         ]}
       />
     </View>
@@ -34,7 +34,7 @@ const RpePicker = props => {
 
 RpePicker.propTypes = {
   onChangeRpe: PropTypes.func,
-  RPE: PropTypes.number,
+  RPE: PropTypes.number
 };
 
 export default RpePicker;
