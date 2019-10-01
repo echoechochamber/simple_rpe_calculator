@@ -99,10 +99,11 @@ export default class App extends React.Component {
                 <Text style={textInput.label}>Weight</Text>
                 <TextInput
                   style={textInput.input}
-                  onChangeText={this.setWeight}
+                  onSubmitEditing={this.setWeight}
                   value={this.state.weight}
                   keyboardType={"numeric"}
                   clearTextOnFocus={true}
+                  returnKeyType={"done"}
                 />
               </View>
               <RpePicker RPE={this.state.refRpe} onChangeRpe={this.setRefRpe} />
