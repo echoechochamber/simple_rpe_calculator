@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { Text, View } from "react-native";
 import PropTypes from "prop-types";
 import RNPickerSelect from "react-native-picker-select";
-import {defaultPicker, picker} from "../styles";
+import { defaultPicker, picker } from "../styles";
+
 const RepsPicker = props => {
   const changeReps = val => {
     props.onChangeReps(parseInt(val));
@@ -27,7 +28,7 @@ const RepsPicker = props => {
           { label: "x9", value: "9" },
           { label: "x10", value: "10" },
           { label: "x11", value: "11" },
-          { label: "x12", value: "12" },
+          { label: "x12", value: "12" }
         ]}
       />
     </View>
@@ -36,7 +37,7 @@ const RepsPicker = props => {
 
 RepsPicker.propTypes = {
   onChangeReps: PropTypes.func,
-  reps: PropTypes.number,
+  reps: PropTypes.number
 };
 
 export default RepsPicker;

@@ -1,10 +1,10 @@
 import React from "react";
 import {
   ActivityIndicator,
-  View,
-  TextInput,
   FlatList,
-  Text
+  Text,
+  TextInput,
+  View
 } from "react-native";
 import RpePicker from "./src/components/RpePicker";
 import RepsPicker from "./src/components/repsPicker";
@@ -13,6 +13,7 @@ import SmallestWeightSwitch from "./src/components/smallestWeightSwitch";
 import { calculateE1RM } from "./src/lib";
 import * as Font from "expo-font";
 import { app, textInput } from "./src/styles";
+
 const rpeValues = ["6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10"];
 
 export default class App extends React.Component {
