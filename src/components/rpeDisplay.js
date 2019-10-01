@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text } from "react-native";
 import PropTypes from "prop-types";
 import RPE from "../RPE.json";
 import { roundToNearestWeight } from "../lib";
@@ -23,7 +23,7 @@ RpeDisplay.propTypes = {
   repCount: PropTypes.number.isRequired,
   e1RM: PropTypes.number.isRequired,
   rpe: PropTypes.number.isRequired,
-  hasSmallWeights: PropTypes.bool.isRequired,
+  hasSmallWeights: PropTypes.bool.isRequired
 };
 
 export default RpeDisplay;

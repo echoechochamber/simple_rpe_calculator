@@ -20,9 +20,9 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      refRpe: 6,
-      refReps: 1,
-      targetReps: 1,
+      refRpe: NaN,
+      refReps: NaN,
+      targetReps: NaN,
       weight: "0",
       hasSmallWeights: false,
       fontLoaded: false
@@ -43,8 +43,9 @@ export default class App extends React.Component {
     this.setState({ refReps: reps });
   }
 
-  setWeight(weight) {
-    this.setState({ weight: weight });
+  setWeight(e) {
+    console.log(e.currentTarget);
+    this.setState({ weight: e.currentTarget });
   }
 
   toggleSmallestWeights(value) {
@@ -101,10 +102,10 @@ export default class App extends React.Component {
                 <TextInput
                   style={textInput.input}
                   onSubmitEditing={this.setWeight}
-                  value={this.state.weight}
+                  defaultValue={"0"}
                   keyboardType={"numeric"}
-                  clearTextOnFocus={true}
                   returnKeyType={"done"}
+                  selectTextOnFocus={true}
                 />
               </View>
               <RpePicker RPE={this.state.refRpe} onChangeRpe={this.setRefRpe} />

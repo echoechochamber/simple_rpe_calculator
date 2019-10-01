@@ -4,17 +4,19 @@ const barWeight = 45;
 const plateValues = [45, 25, 10, 5, 2.5]; // TODO : make it possible to calculate when we have access to 1.25s
 
 export function calculateE1RM(weight, reps, rpe) {
+  if (isNaN(reps) || isNaN(rpe)) {
+    return 0;
+  }
   const rpeVal = RPE[rpe][reps];
   return weight / rpeVal;
 }
 
 export function roundToNearestWeight(weight, hasTwoPointFives = false) {
-  if (Math.round(weight) === 0) {
+  if (Math.round(weight) === 0 || isNaN(weight)) {
     return 0;
   }
   // find the weights on one side (simplifies the calculation )
-  const weightPerSide = (Math.round(weight) - barWeight) / 2;
-  let tmp = weightPerSide;
+  let tmp = (Math.round(weight) - barWeight) / 2;
   let storageValue = 0;
 
   const availablePlates = hasTwoPointFives
